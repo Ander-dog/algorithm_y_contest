@@ -54,14 +54,14 @@ def all_bracket(i, n, br_seq, stack):
     if n == 0:
         print(br_seq)
     elif i == n:
-        stack, closing_br = stack[:-1], stack[-1]
+        closing_br = stack.pop()
         all_bracket(i - 1, n - 1, br_seq + closing_br, stack)
     else:
         all_bracket(i + 1, n - 1, br_seq + '(', stack + ')')
         all_bracket(i + 1, n - 1, br_seq + '[', stack + ']')
         all_bracket(i + 1, n - 1, br_seq + '{', stack + '}')
         if i > 0:
-            stack, closing_br = stack[:-1], stack[-1]
+            closing_br = stack.pop()
             all_bracket(i - 1, n - 1, br_seq + closing_br, stack)
 
 
